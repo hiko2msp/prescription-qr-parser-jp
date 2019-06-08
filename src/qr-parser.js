@@ -45,6 +45,109 @@ const recordNames = {
 }
 
 const modelDefinition = {
+    '1': [
+        {name: 'medicalInstitutionCodeType', desc: '医療機関コード種別', required: true, type: DATATYPE.NUMBER},
+        {name: 'medicalInstitutionCode', desc: '医療機関コード', required: true, type: DATATYPE.ALPHANUM},
+        {name: 'medicalInstitutionPrefectureCode', desc: '医療機関都道府県コード', required: true, type: DATATYPE.ALPHANUM},
+        {name: 'medicalInstitutionName', desc: '医療機関名称', type: DATATYPE.STRING},
+    ],
+    '2': [
+        {name: 'medicalInstitutionZipCode', desc: '医療機関郵便番号', type: DATATYPE.ALPHANUM},
+        {name: 'medicalInstitutionAddress', desc: '医療機関所在地', type: DATATYPE.STRING},
+    ],
+    '3': [
+        {name: 'medicalInstitutionPhoneNumber', desc: '医療機関電話番号', required: true, type: DATATYPE.ALPHANUM},
+        {name: 'medicalInstitutionFaxNumber', desc: 'FAX番号', type: DATATYPE.ALPHANUM},
+        {name: 'medicalInstitutionOtherContactAddress', desc: 'その他連絡先', type: DATATYPE.STRING},
+    ],
+    '4': [
+        {name: 'medicalDepartmentType', desc: '診療科コード種別', required: true, type: DATATYPE.NUMBER},
+        {name: 'medicalDepartmentCode', desc: '診療科コード', type: DATATYPE.ALPHANUM},
+        {name: 'medicalDepartmentName', desc: '診療科名', required: true, type: DATATYPE.STRING},
+    ],
+    '5': [
+        {name: 'doctorCode', desc: '医師コード', type: DATATYPE.ALPHANUM},
+        {name: 'doctorNameKana', desc: '医師カナ氏名', type: DATATYPE.ALPHANUM},
+        {name: 'doctorName', desc: '医師漢字氏名', required: true, type: DATATYPE.STRING},
+    ],
+    '11': [
+        {name: 'patientCode', desc: '患者コード', type: DATATYPE.ALPHANUM},
+        {name: 'patientName', desc: '患者漢字氏名', required: true, type: DATATYPE.STRING},
+        {name: 'patientNameKana', desc: '患者カナ氏名', required: true, type: DATATYPE.ALPHANUM},
+    ],
+    '12': [
+        {name: 'patientSex', desc: '患者性別', required: true, type: DATATYPE.NUMBER},
+    ],
+    '13': [
+        {name: 'patientBirthday', desc: '患者生年月日', required: true, type: DATATYPE.NUMBER},
+    ],
+    '14': [
+        {name: 'partialChangedMonayDivision', desc: '一部負担金区分', required: true, type: DATATYPE.NUMBER},
+    ],
+    '21': [
+        {name: 'insuranceType', desc: '保険種別', required: true, type: DATATYPE.NUMBER},
+    ],
+    '22': [
+        {name: 'insuranceNumber', desc: '保険者番号', type: DATATYPE.ALPHANUM},
+    ],
+    '23': [
+        {name: 'insuredSymbol', desc: '被保険者証記号', type: DATATYPE.STRING},
+        {name: 'insuredNumber', desc: '被保険者証番号', type: DATATYPE.STRING},
+        {name: 'insuredType', desc: '被保険者/被扶養者', required: true, type: DATATYPE.NUMBER},
+    ],
+    '24': [
+        {name: 'patientCopayment', desc: '患者負担率', required: true, type: DATATYPE.NUMBER},
+        {name: 'insuranceAllowanceRate', desc: '保険給付率', required: true, type: DATATYPE.NUMBER},
+    ],
+    '25': [
+        {name: 'reasonOnJob', desc: '職務上の事由', required: true, type: DATATYPE.NUMBER},
+    ],
+    '27': [
+        {name: 'publicMonayChangeNumber1', desc: '第一公費負担者番号', required: true, type: DATATYPE.NUMBER},
+        {name: 'publicMonayRecipientNumber1', desc: '第一公費受給者番号', type: DATATYPE.NUMBER},
+    ],
+    '28': [
+        {name: 'publicMonayChangeNumber2', desc: '第二公費負担者番号', required: true, type: DATATYPE.NUMBER},
+        {name: 'publicMonayRecipientNumber2', desc: '第二公費受給者番号', type: DATATYPE.NUMBER},
+    ],
+    '29': [
+        {name: 'publicMonayChangeNumber3', desc: '第三公費負担者番号', required: true, type: DATATYPE.NUMBER},
+        {name: 'publicMonayRecipientNumber3', desc: '第三公費受給者番号', type: DATATYPE.NUMBER},
+    ],
+    '30': [
+        {name: 'publicMonayChangeNumberSpecial', desc: '特殊公費負担者番号', required: true, type: DATATYPE.NUMBER},
+        {name: 'publicMonayRecipientNumberSpecial', desc: '特殊公費受給者番号', type: DATATYPE.NUMBER},
+    ],
+    '31': [
+        {name: 'receiptTypeCode', desc: 'レセプト種別コード', required: true, type: DATATYPE.NUMBER},
+    ],
+    '51': [
+        {name: 'prescriptionDate', desc: '処方箋交付年月日', required: true, type: DATATYPE.NUMBER},
+    ],
+    '52': [
+        {name: 'expiredDate', desc: '使用期限年月日', required: true, type: DATATYPE.NUMBER},
+    ],
+    '61': [
+        {name: 'narcoticsUserLicenseNumber', desc: '麻薬施用者免許番号', type: DATATYPE.ALPHANUM},
+        {name: 'narcoticsUsingPatientAddress', desc: '麻薬施用患者住所', required: true, type: DATATYPE.STRING},
+        {name: 'narcoticsUsingPatientPhoneNumber', desc: '麻薬施用患者電話番号', required: true, type: DATATYPE.ALPHANUM},
+    ],
+    '62': [
+        {name: 'remainingMedicineConfirmationFlag', desc: '残薬確認対応フラグ', required: true, type: DATATYPE.NUMBER},
+    ],
+    '63': [
+        {name: 'numDivision', desc: '分割回数', required: true, type: DATATYPE.NUMBER},
+        {name: 'DivisionIndex', desc: '分割回', required: true, type: DATATYPE.NUMBER},
+    ],
+    '81': [
+        {name: 'remarkIndex', desc: '備考連番', required: true, type: DATATYPE.NUMBER},
+        {name: 'remarkType', desc: '備考種別', type: DATATYPE.NUMBER},
+        {name: 'remark', desc: '備考', required: true, type: DATATYPE.STRING},
+    ],
+    '82': [
+        {name: 'prescriptionNumberType', desc: '処方箋番号種別', required: true, type: DATATYPE.NUMBER},
+        {name: 'prescriptionNumber', desc: '処方箋番号', required: true, type: DATATYPE.NUMBER},
+    ],
     '101': [
         {name: 'rp', desc: 'RP番号', required: true, type: DATATYPE.NUMBER},
         {name: 'dosageCategory', desc: '剤形区分', required: true, type: DATATYPE.NUMBER},
@@ -160,7 +263,12 @@ class QRParser {
             const row = line.split(',');
             const no = parseInt(row[0]);
             const model = getModel(row);
-            if (no < 100) {
+            if (no === 81) {
+                if (!('remarks' in result)) {
+                    result['remarks'] = [];
+                }
+                result['remarks'].push(model);
+            } else if (no < 100) {
                 result[row[0]] = row;
             } else if (no === 101) {
                 if ('administrations' in result) {
@@ -184,10 +292,10 @@ class QRParser {
             } else if (no === 281) {
                 const rpIndex = model['rp']['value'] - 1;
                 const indexInRp = model['indexInRp']['value'] - 1;
-                if (!('additionalRecord' in result['administrations'][rpIndex]['medicines'][indexInRp])) {
-                    result['administrations'][rpIndex]['medicines'][indexInRp]['additionalRecord'] = []
+                if (!('additionalRecords' in result['administrations'][rpIndex]['medicines'][indexInRp])) {
+                    result['administrations'][rpIndex]['medicines'][indexInRp]['additionalRecords'] = []
                 }
-                result['administrations'][rpIndex]['medicines'][indexInRp]['additionalRecord'].push(model);
+                result['administrations'][rpIndex]['medicines'][indexInRp]['additionalRecords'].push(model);
             } else if (200 < no && no < 300) {
                 const rpIndex = model['rp']['value'] - 1;
                 const indexInRp = model['indexInRp']['value'] - 1;
