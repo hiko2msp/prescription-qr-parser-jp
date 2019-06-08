@@ -1,0 +1,26 @@
+{
+  "name": "prescription_qr_parser_jp",
+  "version": "1.0.0",
+  "description": "処方箋のQRコードから取得されたCSVの読み取りを行う",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [
+    "parser"
+  ],
+  "author": "hiko2msp",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiko2msp/prescription-qr-parser-jp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hiko2msp/prescription-qr-parser-jp/issues"
+  },
+  "homepage": "https://github.com/hiko2msp/prescription-qr-parser-jp#readme"
+}
