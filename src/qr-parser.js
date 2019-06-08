@@ -269,7 +269,7 @@ class QRParser {
                 }
                 result['remarks'].push(model);
             } else if (no < 100) {
-                result[row[0]] = row;
+                result[row[0]] = model;
             } else if (no === 101) {
                 if ('administrations' in result) {
                     result['administrations'].push({});
