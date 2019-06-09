@@ -215,7 +215,7 @@ const modelDefinition = {
     '241': [
         {name: 'rp', desc: 'RP番号', required: true, type: DATATYPE.NUMBER},
         {name: 'indexInRp', desc: 'RP内連番', required: true, type: DATATYPE.NUMBER},
-        {name: 'dosage', desc: '１回服用量', required: true, type: DATATYPE.ALPHANUM},
+        {name: 'singleDose', desc: '１回服用量', required: true, type: DATATYPE.ALPHANUM},
         {name: 'timesPerDay', desc: '１日服用回数', type: DATATYPE.NUMBER},
     ],
     '281': [

@@ -32,7 +32,7 @@ export interface Medicine {
     publicMoneyChageDivision2: number;
     publicMoneyChageDivision3: number;
     publicMoneyChageDivisionSpecial: number;
-    dosage: string;
+    singleDose: string;
     timesPerDay: number;
 }
 
