@@ -246,7 +246,7 @@ function getModel(row) {
             }
         })
         .reduce((acc, val) => {
-            acc[val['name']] = val;
+            acc[val['name']] = val['value'];
             return acc;
         }, {});
 }
@@ -258,7 +258,7 @@ class QRParser {
         const [header, ...remains] = lines;
         const version = parseInt(header.replace('JAHIS', ''));
 
-        const result = {};
+        let result = {};
         remains.forEach(line => {
             const row = line.split(',');
             const no = parseInt(row[0]);
@@ -269,7 +269,10 @@ class QRParser {
                 }
                 result['remarks'].push(model);
             } else if (no < 100) {
-                result[model['name']] = model;
+                result = {
+                    ...model,
+                    ...result,
+                }
             } else if (no === 101) {
                 if ('administrations' in result) {
                     result['administrations'].push({});
@@ -277,34 +280,34 @@ class QRParser {
                     result['administrations'] = [{}];
                 }
             } else if (no === 181) {
-                const rpIndex = model['rp']['value'] - 1;
+                const rpIndex = model['rp'] - 1;
                 if (!('subInfo' in result['administrations'][rpIndex])) {
                     result['administrations'][rpIndex]['subInfo'] = [];
                 }
                 result['administrations'][rpIndex]['subInfo'].push(model);
             } else if (100 < no && no < 200) {
-                const rpIndex = model['rp']['value'] - 1;
+                const rpIndex = model['rp'] - 1;
                 result['administrations'][rpIndex] = {
                     ...model,
                     ...result['administrations'][rpIndex],
                 }
             } else if (no === 201) {
-                const rpIndex = model['rp']['value'] - 1;
+                const rpIndex = model['rp'] - 1;
                 if ('medicines' in result['administrations'][rpIndex]) {
                     result['administrations'][rpIndex]['medicines'].push({});
                 } else {
                     result['administrations'][rpIndex]['medicines'] = [{}];
                 }
             } else if (no === 281) {
-                const rpIndex = model['rp']['value'] - 1;
-                const indexInRp = model['indexInRp']['value'] - 1;
+                const rpIndex = model['rp'] - 1;
+                const indexInRp = model['indexInRp'] - 1;
                 if (!('additionalRecords' in result['administrations'][rpIndex]['medicines'][indexInRp])) {
                     result['administrations'][rpIndex]['medicines'][indexInRp]['additionalRecords'] = []
                 }
                 result['administrations'][rpIndex]['medicines'][indexInRp]['additionalRecords'].push(model);
             } else if (200 < no && no < 300) {
-                const rpIndex = model['rp']['value'] - 1;
-                const indexInRp = model['indexInRp']['value'] - 1;
+                const rpIndex = model['rp'] - 1;
+                const indexInRp = model['indexInRp'] - 1;
                 result['administrations'][rpIndex]['medicines'][indexInRp] = {
                     ...model,
                     ...result['administrations'][rpIndex]['medicines'][indexInRp]
