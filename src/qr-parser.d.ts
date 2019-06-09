@@ -2,13 +2,13 @@
 // Project: prescription-qr-parser-jp
 // Definitions by: hiko2msp
 
-interface AdditionalRecords {
+export interface AdditionalRecords {
     medicineSubDivision: number;
     medicineSubInfo: string;
     SubAdministrationCode: string;
 }
 
-interface Medicine {
+export interface Medicine {
     additionalRecords: AdditionalRecords[];
     infomationDivision: number;
     medicineCodeType: number;
@@ -36,14 +36,14 @@ interface Medicine {
     timesPerDay: number;
 }
 
-interface AdministrationSubInfo {
+export interface AdministrationSubInfo {
     administrationSubDivision: number;
     administrationSubInfo: string;
     subAdministrationCode: string;
     partCode: string;
 }
 
-interface Administration {
+export interface Administration {
     dosageCategory: number;
     dosageName: string;
     numPrepared: number;
@@ -57,12 +57,12 @@ interface Administration {
     medicines: Medicine[];
 }
 
-interface Remark {
+export interface Remark {
     remarkType: number;
     remark: string;
 }
 
-interface Prescription {
+export interface Prescription {
     medicalInstitutionCodeType: number;
     medicalInstitutionCode: string;
     medicalInstitutionPrefectureCode: string;
@@ -115,6 +115,6 @@ interface Prescription {
     administrations: Administration[];
 }
 
-declare class QRParser {
+export declare class QRParser {
     parse: (text: string) => Prescription;
 }
