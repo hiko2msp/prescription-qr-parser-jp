@@ -269,13 +269,19 @@ class QRParser {
                 }
                 result['remarks'].push(model);
             } else if (no < 100) {
-                result[row[0]] = model;
+                result[model['name']] = model;
             } else if (no === 101) {
                 if ('administrations' in result) {
                     result['administrations'].push({});
                 } else {
                     result['administrations'] = [{}];
                 }
+            } else if (no === 181) {
+                const rpIndex = model['rp']['value'] - 1;
+                if (!('subInfo' in result['administrations'][rpIndex])) {
+                    result['administrations'][rpIndex]['subInfo'] = [];
+                }
+                result['administrations'][rpIndex]['subInfo'].push(model);
             } else if (100 < no && no < 200) {
                 const rpIndex = model['rp']['value'] - 1;
                 result['administrations'][rpIndex] = {

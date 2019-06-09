@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "処方箋のQRコードから取得されたCSVの読み取りを行う",
   "main": "index.js",
+  "types": "src/qr-parser.d.ts",
   "scripts": {
     "test": "jasmine"
   },
